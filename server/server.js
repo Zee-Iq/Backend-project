@@ -5,4 +5,4 @@ app.get("/" , (req, res) =>{
     res.send("hello fromserver.js ")
 } )
 
-app.listen(3006,() => console.log("server is running ") )
+app.listen(3009,() => console.log("server is running ") )
