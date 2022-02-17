@@ -1,0 +1,95 @@
+{
+  "meals": [
+    {
+      "idMeal": "52771",
+      "strMeal": "Spicy Arrabiata Penne",
+      "strDrinkAlternate": null,
+      "strCategory": "Vegetarian",
+      "strArea": "Italian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
+      "strTags": null
+    },
+    {
+      "idMeal": "52805",
+      "strMeal": "Lamb Biryani",
+      "strDrinkAlternate": null,
+      "strCategory": "Lamb",
+      "strArea": "Indian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
+      "strTags": null
+
+    },
+    {
+      "idMeal": "52978",
+      "strMeal": "Kumpir",
+      "strDrinkAlternate": null,
+      "strCategory": "Side",
+      "strArea": "Turkish",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg",
+      "strTags": "SideDish"
+    },
+    {
+      "idMeal": "52906",
+      "strMeal": "Flamiche",
+      "strDrinkAlternate": null,
+      "strCategory": "Vegetarian",
+      "strArea": "French",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wssvvs1511785879.jpg",
+      "strTags": "Tart"
+    },
+    {
+      "idMeal": "52845",
+      "strMeal": "Turkey Meatloaf",
+      "strDrinkAlternate": null,
+      "strCategory": "Miscellaneous",
+      "strArea": "British",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ypuxtw1511297463.jpg",
+      "strTags": "Alcoholic"
+    },
+    {
+      "idMeal": "52978",
+      "strMeal": "Kumpir",
+      "strDrinkAlternate": null,
+      "strCategory": "Side",
+      "strArea": "Turkish",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg",
+      "strTags": "SideDish"
+    },
+    {
+      "idMeal": "52836",
+      "strMeal": "Seafood fideuà",
+      "strDrinkAlternate": null,
+      "strCategory": "Seafood",
+      "strArea": "Spanish",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg",
+      "strTags": null
+    },
+    {
+        "idMeal": "52877",
+        "strMeal": "Lamb and Potato pie",
+        "strDrinkAlternate": null,
+        "strCategory": "Lamb",
+        "strArea": "British",
+        "strMealThumb": "https://www.themealdb.com/images/media/meals/sxrpws1511555907.jpg",
+        "strTags": "Pie"
+    },
+    {
+        "idMeal": "52847",
+        "strMeal": "Pork Cassoulet",
+        "strDrinkAlternate": null,
+        "strCategory": "Pork",
+        "strArea": "French",
+        "strMealThumb": "https://www.themealdb.com/images/media/meals/wxuvuv1511299147.jpg",
+        "strTags": null
+    },
+    {
+        "idMeal": "52925",
+        "strMeal": "Split Pea Soup",
+        "strDrinkAlternate": null,
+        "strCategory": "Side",
+        "strArea": "Canadian",
+        "strMealThumb": "https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg",
+        "strTags": "Soup,Warm"
+    }
+  ]
+}
