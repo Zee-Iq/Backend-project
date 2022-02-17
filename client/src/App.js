@@ -6,10 +6,12 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 /* -------------------------------------------------------------------------- */
 // import home
 import Home from './components/Home/Home'
+import { Contact } from "./pages/Contact/Contact";
 
 function App() {
   return (
     <div className="App">
+      <Contact />
       <Home />
     </div>
   );
