@@ -5,7 +5,7 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 /*                           // importing component:                          */
 /* -------------------------------------------------------------------------- */
 // import home
-import Home from './components/Home/home'
+import Home from './components/Home/Home'
 
 function App() {
   return (
