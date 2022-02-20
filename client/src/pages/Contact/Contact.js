@@ -46,16 +46,16 @@ export const Contact = () => {
   useEffect(() => {
     
     localStorage.setItem("LS_ITEMS: ",JSON.stringify(allContact) )
-    console.log('--------------------------use_Effect executed-------------')
+    // console.log('--------------------------use_Effect executed-------------')
     setBol(false)
-  }, [bol == true])
+  }, [bol === true])
 
   
 
   
 
-  console.log('Contacts JSON: ', contacts)
-  console.log('ALL CONTACTS ARE: ', allContact)
+  // console.log('Contacts JSON: ', contacts)
+  // console.log('ALL CONTACTS ARE: ', allContact)
   return (
     <div>
       <div

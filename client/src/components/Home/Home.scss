@@ -1,0 +1,22 @@
+.topSeller {
+  text-align: center;
+  margin: 5% 0;
+  //   color: #521c06;
+  color: coral;
+}
+
+.topSeller::after {
+  content: "";
+  display: block;
+  width: 15%;
+  margin: 0 auto;
+  // border-top: 8px solid #521c06;
+  border-top: 11px groove;
+  border-color: coral;
+  border-radius: 2px;
+}
+
+.topSeller h1 {
+  font-weight: bolder;
+
+}
