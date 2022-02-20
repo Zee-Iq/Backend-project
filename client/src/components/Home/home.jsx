@@ -41,7 +41,7 @@ export default function Home() {
             <MDBCardHeader>{meal.strArea}</MDBCardHeader>
             <MDBCardBody>
               <MDBCardTitle>{meal.strMeal}</MDBCardTitle>
-              <MDBCardText>some text here!</MDBCardText>
+              <MDBCardText>some text here</MDBCardText>
               {/* <MDBBtn className="sm">add to cart</MDBBtn> */}
             </MDBCardBody>
             <MDBCardFooter>
