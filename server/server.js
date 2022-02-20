@@ -1,8 +1,17 @@
 const express = require('express')
 const app = express()
 
+require('dotenv').config()
+
+app.use('/contacts', require('./routes/contactRoute'))
+
+
+
+
+
 app.get("/" , (req, res) =>{
     res.send("hello fromserver.js ")
 } )
 
-app.listen(3009,() => console.log("server is running ") )
+const port = process.env.PORT || 8000
+app.listen(port,() => console.log("server is running at " + port) )
