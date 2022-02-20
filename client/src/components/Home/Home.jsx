@@ -1,3 +1,4 @@
+import './Home.scss'
 import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import axios from "axios";
