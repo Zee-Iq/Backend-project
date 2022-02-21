@@ -2,8 +2,17 @@ import { MDBIcon } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import "./Contact.scss";
 
-export const Contact = () => {
 
+
+
+export const Contact = () => {
+  
+  const contacts = require('../../datas/ContactData.json').contacts
+ /*  window.localStorage.setItem('LS_Contacts:', JSON.stringify(contacts)) */
+
+  const initialValue = JSON.parse(
+    window.localStorage.getItem("LS_ITEMS: ") || '[]'
+  )
   const [contactName, setContactName] = useState()
   const [contactMail, setContactMail] = useState()
   const [contactPhone, setContactPhone] = useState()
@@ -13,7 +22,7 @@ export const Contact = () => {
   const [flag, setFlag] = useState(false)
 
   const [contact, setContact] = useState({})
-  const [allContact, setAllContact] = useState([])
+  const [allContact, setAllContact] = useState(initialValue)  
 
   useEffect(() => {
       setContact({
@@ -25,19 +34,28 @@ export const Contact = () => {
       })
   }, [flag])
 
+  const [ bol, setBol] = useState(false)
   const handleSubmit = (e) => {
-
     e.preventDefault();
     setAllContact([...allContact, contact])
-    setContact({})
-    setFlag(!flag)
-
+   setBol(true)
+    contacts.push(contact) 
+    setFlag(!flag)    
   }
 
-  console.log(`NAME: ${contactName} \nMAIL: ${contactMail} \nPHONE: ${contactPhone} \nLOCATION: ${contactLocation} \nMESSAGE: ${contactMessage}`)
+  useEffect(() => {
+    
+    localStorage.setItem("LS_ITEMS: ",JSON.stringify(allContact) )
+    // console.log('--------------------------use_Effect executed-------------')
+    setBol(false)
+  }, [bol === true])
 
-  console.log('CONTACT is: ', contact)
-  console.log('ALL CONTACTS ARE: ', allContact)
+  
+
+  
+
+  // console.log('Contacts JSON: ', contacts)
+  // console.log('ALL CONTACTS ARE: ', allContact)
   return (
     <div>
       <div
@@ -55,7 +73,7 @@ export const Contact = () => {
                   <div className="col-lg-8">
                     <div className="contact-box p-4">
                       <h4 className="title">Contact Us</h4>
-                      <form>
+                      <form onSubmit={(e) =>handleSubmit(e)}>
                         <div className="row">
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
@@ -99,7 +117,7 @@ export const Contact = () => {
                           </div>
                           <div className="col-lg-12">
                             <div className="form-group mt-3">
-                              <input
+                              <textarea
                               onChange={(e) => (setContactMessage(e.target.value), setFlag(!flag))}
                                 className="form-control"
                                 type="text"
@@ -112,7 +130,7 @@ export const Contact = () => {
                               type="submit"
                               className="btn btn-danger-gradiant mt-3 mb-3 text-white border-0 py-2 px-3"
                             >
-                              <span onClick={handleSubmit}>
+                              <span  >
                                
                                 SUBMIT NOW <i className="ti-arrow-right"></i>
                               </span>
