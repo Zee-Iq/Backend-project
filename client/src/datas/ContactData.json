@@ -1,0 +1,15 @@
+
+
+{
+    "contacts": [
+
+        {
+            "name":"John",
+            "mail": "john@mail.com",
+            "phone": 123456,
+            "location": "Berlin",
+            "message": "Message 1"
+        }
+
+    ]
+}
