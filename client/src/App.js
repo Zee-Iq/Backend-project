@@ -11,15 +11,21 @@ import Home from './pages/Home/Home'
 import {Contact}  from "./pages/Contact/Contact";
 import {About} from './pages/About/About';
 import Admin from "./pages/Admin/admin";
-import { Demo } from "./pages/Demo/Demo";
+import LogIn from "./components/RegisterLogin/login";
+import Register from "./components/RegisterLogin/register";
 function App() {
   return (
     <div className="App">
+     
       <Switch>
-        <Route exact path='/home' component={Home} />
-        <Route exact path='/about' component={About} />
+        
+        {/*  <Register />
+         <LogIn /> */}
+        <Route exact path='/' component={Home} />
+        <Route exact path='/register' component={Register} />
+        <Route exact path='/login' component={LogIn} />
         <Route exact path='/contact' component={Contact} />
-        <Route exact path='/demo' component={Demo} />
+        {/* <Route exact path='/demo' component={Demo} /> */}
         <Route exact path='/admin' component={Admin} />
       </Switch>
     </div>
