@@ -11,10 +11,13 @@ import Home from './components/Home/Home'
 import {Contact}  from "./pages/Contact/Contact";
 import { Route, Switch } from "react-router-dom";
 import Admin from "./pages/Admin/admin";
+import LogIn from "./components/RegisterLogin/login";
 function App() {
   return (
     <div className="App">
+     
       <Switch>
+         <LogIn />
         <Route exact path='/' component={Home} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/admin' component={Admin} />
