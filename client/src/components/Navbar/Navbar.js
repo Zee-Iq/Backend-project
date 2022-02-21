@@ -21,18 +21,18 @@ export default function Navbar () {
             <div className="collapse navbar-collapse" id="navbarExample01">
               <MDBNavbarNav right className="mb-2 mb-lg-0">
                 <MDBNavbarItem active>
-                  <MDBNavbarLink aria-current="page" href="#">
+                  <MDBNavbarLink aria-current="page" href="/">
                     Home
                   </MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="#">Features</MDBNavbarLink>
+                  <MDBNavbarLink href="/about">About</MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="#">Pricing</MDBNavbarLink>
+                  <MDBNavbarLink href="/contact">Contact</MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="#">About</MDBNavbarLink>
+                  <MDBNavbarLink href="/demo">Demo</MDBNavbarLink>
                 </MDBNavbarItem>
               </MDBNavbarNav>
               <Link to="/login">
