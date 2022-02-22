@@ -23,8 +23,8 @@ const Register = () => {
     <Grid>
       <Paper elevation={20} style={paperStyle}>
         <Grid align="center">
-          <Avatar style={avatarStyle}>
-            <AddCircleOutlineOutlinedIcon />
+          <Avatar /* style={avatarStyle} */>
+            {/* <AddCircleOutlineOutlinedIcon /> */}
           </Avatar>
           <h2 style={headerStyle}>Register</h2>
           <Typography variant="caption" gutterBottom>
