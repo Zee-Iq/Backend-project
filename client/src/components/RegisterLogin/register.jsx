@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   Paper,
@@ -14,7 +15,26 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+
+
 const Register = () => {
+
+  /* catching data */
+const [user, setUser] = useState({
+  username: "",
+  mail: "",
+  password: "",
+});
+
+/*  User input*/
+const onInputChange = (e) => {
+  setUser({ ...user, [e.target.name]: e.target.value });
+};
+console.log(user)
+
+
+
+
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
@@ -32,8 +52,20 @@ const Register = () => {
           </Typography>
         </Grid>
         <form>
-          <TextField fullWidth label="Name" placeholder="Enter your name" />
-          <TextField fullWidth label="Email" placeholder="Enter your email" />
+          <TextField
+            fullWidth
+            label="Name"
+            placeholder="Enter your name"
+            name="name"
+            onChange={(e) => onInputChange(e)}
+          />
+          <TextField
+            fullWidth
+            label="Email"
+            placeholder="Enter your email"
+            name="mail"
+            onChange={(e) => onInputChange(e)}
+          />
           <FormControl component="fieldset" style={marginTop}>
             <FormLabel component="legend">Gender</FormLabel>
             <RadioGroup
@@ -47,7 +79,11 @@ const Register = () => {
                 label="Female"
               />
               <FormControlLabel value="male" control={<Radio />} label="Male" />
-              <FormControlLabel value="other" control={<Radio />} label="Other" />
+              <FormControlLabel
+                value="other"
+                control={<Radio />}
+                label="Other"
+              />
             </RadioGroup>
           </FormControl>
           <TextField
@@ -59,6 +95,8 @@ const Register = () => {
             fullWidth
             label="Password"
             placeholder="Enter your password"
+            name="password"
+            onChange={(e) => onInputChange(e)}
           />
           <TextField
             fullWidth
