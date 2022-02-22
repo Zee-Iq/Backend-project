@@ -8,7 +8,7 @@ app.use("/contacts", require("./routes/contactRoute"));
 app.use("/meals", require("./routes/mealsRoute"));
 
 app.get("/", (req, res) => {
-  res.send("hello fromserver.js ");
+  res.send("API is running... ");
 });
 
 const port = process.env.PORT || 8000;
