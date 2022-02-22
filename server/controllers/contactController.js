@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const fs = require("fs");
 const path = require("path");
 const fullpath = path.join(__dirname, "../../data/ContactData.json");
@@ -39,43 +40,17 @@ exports.handleAddContact = (req, res) => {
   }
 };
 
+//EDIT
 
-/* 
-const fs = require("fs");
-const path = require("path");
-const fullpath = path.join(__dirname, "../ContactData.json");
+exports.handleEditContact = (req, res) => {
 
-console.log("path is: ", fullpath);
+    res.send('HELLO FROM EDIT')
 
-let contacts = [];
+}
 
-const loadContacts = () => {
-  const data = fs.readFileSync(fullpath, "utf8");
-  contacts = [...JSON.parse(data)];
-};
+// DELETE
 
-loadContacts();
+exports.handleDeleteContact = (req, res) => {
+    res.send('HELLO FROM DELETE')
+}
 
-const saveContacts = () => {
-  fs.writeFileSync(fullpath, JSON.stringify(contacts, null, "\t"));
-};
-
-exports.handleListContact = (req, res) => {
-  res.send(contacts);
-};
-
-exports.handleAddContact = (req, res) => {
-  try {
-    loadContacts();
-
-    contacts.push(req.body);
-
-    saveContacts();
-    res.send(contacts);
-  } catch (error) {
-    console.log("handleAddContact error", error.message);
-    res.send(error.message);
-  }
-};
-
- */

@@ -1,44 +1,52 @@
-import { MDBIcon } from "mdb-react-ui-kit";
+import { MDBIcon, MDBModal } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import "./Contact.scss";
 import axios from "axios";
+import { Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export const Contact = () => {
-  const [contactName, setContactName] = useState();
-  const [contactMail, setContactMail] = useState();
-  const [contactPhone, setContactPhone] = useState();
-  const [contactLocation, setContactLocation] = useState();
-  const [contactMessage, setContactMessage] = useState();
-
-  const [flag, setFlag] = useState(false);
-
-  const [contact, setContact] = useState({});
-  const [allContact, setAllContact] = useState([]);
+  const [cd, setCd] = useState();
+  const [flag, setflag] = useState();
 
   useEffect(() => {
-    setContact({
-      name: contactName,
-      mail: contactMail,
-      phone: contactPhone,
-      location: contactLocation,
-      message: contactMessage,
-    });
+    const getData = async () => {
+      const response = await axios.get("/contacts/list");
+      setCd([...response.data]);
+    };
+
+    getData();
   }, [flag]);
 
-  const [bool, setBool] = useState(false)
+  console.log("cd", cd);
 
-  const handleAddContact = async () => {
+  const [contact, setContact] = useState({
+    name: "",
+    mail: "",
+    phone: "",
+    location: "",
+    message: "",
+  });
+  const [allContact, setAllContact] = useState([]);
 
-    const response = await axios.post("/contacts/add", contact);
-
-  }
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setAllContact([...allContact, contact]);  
-    setFlag(!flag);
-    handleAddContact()
+  // GET INFO FROM USER
+  const onInputChange = (e) => {
+    setContact({ ...contact, [e.target.name]: e.target.value });
   };
 
+  // SEND CONTACT OBJECT TO THE SERVER SIDE
+  const handleAddContact = async () => {
+    const response = await axios.post("/contacts/add", contact);
+    setflag(!flag);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setAllContact([...allContact, contact]);
+    handleAddContact();
+  };
+  console.log("contact is: ", contact);
   console.log("ALL CONTACTS ARE: ", allContact);
   return (
     <div className="m-5">
@@ -62,9 +70,8 @@ export const Contact = () => {
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
                               <input
-                                onChange={(e) => (
-                                  setContactName(e.target.value), setFlag(!flag)
-                                )}
+                                name="name"
+                                onChange={(e) => onInputChange(e)}
                                 className="form-control"
                                 type="text"
                                 placeholder="name"
@@ -74,9 +81,8 @@ export const Contact = () => {
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
                               <input
-                                onChange={(e) => (
-                                  setContactMail(e.target.value), setFlag(!flag)
-                                )}
+                                name="mail"
+                                onChange={(e) => onInputChange(e)}
                                 className="form-control"
                                 type="text"
                                 placeholder="email"
@@ -86,10 +92,8 @@ export const Contact = () => {
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
                               <input
-                                onChange={(e) => (
-                                  setContactPhone(e.target.value),
-                                  setFlag(!flag)
-                                )}
+                                name="phone"
+                                onChange={(e) => onInputChange(e)}
                                 className="form-control"
                                 type="text"
                                 placeholder="phone"
@@ -99,10 +103,8 @@ export const Contact = () => {
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
                               <input
-                                onChange={(e) => (
-                                  setContactLocation(e.target.value),
-                                  setFlag(!flag)
-                                )}
+                                name="location"
+                                onChange={(e) => onInputChange(e)}
                                 className="form-control"
                                 type="text"
                                 placeholder="location"
@@ -112,10 +114,8 @@ export const Contact = () => {
                           <div className="col-lg-12">
                             <div className="form-group mt-3">
                               <textarea
-                                onChange={(e) => (
-                                  setContactMessage(e.target.value),
-                                  setFlag(!flag)
-                                )}
+                                name="message"
+                                onChange={(e) => onInputChange(e)}
                                 className="form-control"
                                 type="text"
                                 placeholder="message"
@@ -192,6 +192,43 @@ export const Contact = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <h1>TEST</h1>
+        {cd?.map((item, index) => {
+          return (
+            <Row key={index} className="m-2 shadow ">
+              <Col className=" ">{item.name}</Col>
+              <Col className=" ">{item.mail}</Col>
+              <Col className=" ">{item.phone}</Col>
+              <Col className=" ">{item.location}</Col>
+              <Col className="">{item.message}</Col>
+              <Col>
+                <OverlayTrigger
+                  overlay={<Tooltip  id={`tooltip-top`}>Edit</Tooltip>}
+                >
+                  <button
+                    /* onClick={handleShow} */ className="btn text-warning btn-act"
+                    data-toggle="modal"
+                  >
+                    <EditIcon />
+                  </button>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  overlay={<Tooltip id={`tooltip-top`}>Delete</Tooltip>}
+                >
+                  <button
+                    /* onClick={() => deleteEmployee(employee.id)} */ className="btn text-danger btn-act"
+                    data-toggle="modal"
+                  >
+                    <DeleteIcon />{" "}
+                  </button>
+                </OverlayTrigger>
+              </Col>
+              
+            </Row>
+          );
+        })}
       </div>
     </div>
   );
