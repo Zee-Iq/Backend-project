@@ -1,67 +1,51 @@
 import { MDBIcon } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import "./Contact.scss";
-
-
-
+import axios from "axios";
 
 export const Contact = () => {
-  
-  const contacts = require('../../datas/ContactData.json').contacts
- /*  window.localStorage.setItem('LS_Contacts:', JSON.stringify(contacts)) */
+  const [contactName, setContactName] = useState();
+  const [contactMail, setContactMail] = useState();
+  const [contactPhone, setContactPhone] = useState();
+  const [contactLocation, setContactLocation] = useState();
+  const [contactMessage, setContactMessage] = useState();
 
-  const initialValue = JSON.parse(
-    window.localStorage.getItem("LS_ITEMS: ") || '[]'
-  )
-  const [contactName, setContactName] = useState()
-  const [contactMail, setContactMail] = useState()
-  const [contactPhone, setContactPhone] = useState()
-  const [contactLocation, setContactLocation] = useState()
-  const [contactMessage, setContactMessage] = useState()
+  const [flag, setFlag] = useState(false);
 
-  const [flag, setFlag] = useState(false)
-
-  const [contact, setContact] = useState({})
-  const [allContact, setAllContact] = useState(initialValue)  
+  const [contact, setContact] = useState({});
+  const [allContact, setAllContact] = useState([]);
 
   useEffect(() => {
-      setContact({
-        name:contactName,
-        mail: contactMail,
-        phone: contactPhone,
-        location: contactLocation,
-        message: contactMessage
-      })
-  }, [flag])
+    setContact({
+      name: contactName,
+      mail: contactMail,
+      phone: contactPhone,
+      location: contactLocation,
+      message: contactMessage,
+    });
+  }, [flag]);
 
-  const [ bol, setBol] = useState(false)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAllContact([...allContact, contact])
-   setBol(true)
-    contacts.push(contact) 
-    setFlag(!flag)    
+  const [bool, setBool] = useState(false)
+
+  const handleAddContact = async () => {
+
+    const response = await axios.post("/contacts/add", contact);
+
   }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setAllContact([...allContact, contact]);  
+    setFlag(!flag);
+    handleAddContact()
+  };
 
-  useEffect(() => {
-    
-    localStorage.setItem("LS_ITEMS: ",JSON.stringify(allContact) )
-    // console.log('--------------------------use_Effect executed-------------')
-    setBol(false)
-  }, [bol === true])
-
-  
-
-  
-
-  // console.log('Contacts JSON: ', contacts)
-  // console.log('ALL CONTACTS ARE: ', allContact)
+  console.log("ALL CONTACTS ARE: ", allContact);
   return (
-    <div>
+    <div className="m-5">
       <div
         className="contact2"
         style={{
-          backgroundImage:`url('https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/map.jpg')`
+          backgroundImage: `url('https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/map.jpg')`,
         }}
         id="contact"
       >
@@ -73,12 +57,14 @@ export const Contact = () => {
                   <div className="col-lg-8">
                     <div className="contact-box p-4">
                       <h4 className="title">Contact Us</h4>
-                      <form onSubmit={(e) =>handleSubmit(e)}>
+                      <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="row">
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
                               <input
-                                onChange={(e) => (setContactName(e.target.value), setFlag(!flag))}
+                                onChange={(e) => (
+                                  setContactName(e.target.value), setFlag(!flag)
+                                )}
                                 className="form-control"
                                 type="text"
                                 placeholder="name"
@@ -88,7 +74,9 @@ export const Contact = () => {
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
                               <input
-                                onChange={(e) => (setContactMail(e.target.value), setFlag(!flag))}
+                                onChange={(e) => (
+                                  setContactMail(e.target.value), setFlag(!flag)
+                                )}
                                 className="form-control"
                                 type="text"
                                 placeholder="email"
@@ -98,7 +86,10 @@ export const Contact = () => {
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
                               <input
-                              onChange={(e) => (setContactPhone(e.target.value), setFlag(!flag))}
+                                onChange={(e) => (
+                                  setContactPhone(e.target.value),
+                                  setFlag(!flag)
+                                )}
                                 className="form-control"
                                 type="text"
                                 placeholder="phone"
@@ -108,7 +99,10 @@ export const Contact = () => {
                           <div className="col-lg-6">
                             <div className="form-group mt-3">
                               <input
-                              onChange={(e) => (setContactLocation(e.target.value), setFlag(!flag))}
+                                onChange={(e) => (
+                                  setContactLocation(e.target.value),
+                                  setFlag(!flag)
+                                )}
                                 className="form-control"
                                 type="text"
                                 placeholder="location"
@@ -118,7 +112,10 @@ export const Contact = () => {
                           <div className="col-lg-12">
                             <div className="form-group mt-3">
                               <textarea
-                              onChange={(e) => (setContactMessage(e.target.value), setFlag(!flag))}
+                                onChange={(e) => (
+                                  setContactMessage(e.target.value),
+                                  setFlag(!flag)
+                                )}
                                 className="form-control"
                                 type="text"
                                 placeholder="message"
@@ -130,8 +127,7 @@ export const Contact = () => {
                               type="submit"
                               className="btn btn-danger-gradiant mt-3 mb-3 text-white border-0 py-2 px-3"
                             >
-                              <span  >
-                               
+                              <span>
                                 SUBMIT NOW <i className="ti-arrow-right"></i>
                               </span>
                             </button>
@@ -141,9 +137,9 @@ export const Contact = () => {
                     </div>
                   </div>
                   <div
-                    className="col-lg-4 bg-image" 
+                    className="col-lg-4 bg-image"
                     style={{
-                      backgroundImage:`url('https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/1.jpg')`
+                      backgroundImage: `url('https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/1.jpg')`,
                     }}
                   >
                     <div className="detail-box p-4">
