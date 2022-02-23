@@ -2,20 +2,24 @@ import React, { useContext } from "react";
 import "./cart.scss";
 import { testContext } from "../../components/CartContext/CartContext";
 import { MDBIcon, MDBBtn } from "mdb-react-ui-kit";
-import Link from 'react-router-dom/Link'
+import {Link} from 'react-router-dom'
 
 
 export default function Cart() {
   const { updateCartItems } = useContext(testContext);
+console.log("Testtststs", updateCartItems);
+
 
   return (
-    <div className="cart my-5 ">
+    <div className="cart "  style={{marginBottom: "150px"}}>
       <h1 className="display-1 text-center">
         Cart <MDBIcon icon="shopping-cart" />
       </h1>
 
-      {updateCartItems?.items.length < 1 ? (
-        <div className="w-100 text-center mt-5">
+      {
+      // updateCartItems?.map()
+      updateCartItems?.length < 1 ? (
+        <div className="w-100 text-center mt-5 align-items-center">
           <h4>Your Cart is empty</h4>
           <Link to="/">
             <MDBBtn rounded className="mx-2" color="info">
@@ -24,9 +28,9 @@ export default function Cart() {
           </Link>
         </div>
       ) : (
-        updateCartItems?.items.map((item) => (
+        updateCartItems?.map((item) => (
           <>
-            <div className="cartImg ">
+            <div className="cartImg " >
               <img src={item.strMealThumb} />
             </div>
             <div key={item.id} className="cartItems mx-5">

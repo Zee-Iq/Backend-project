@@ -44,11 +44,14 @@ export default function Home() {
     getData();
   }, []);
   useEffect(() => {
-    setUpdateCartItems( { ...updateCartItems, counter: cartItems, items: cartContent } );
+    if(cartItems >= 1) 
+    setUpdateCartItems( [...updateCartItems, ...cartContent] )
   }, [cartItems]);
+
+
   const cartHandler = (e) => {
     setCartItems(cartItems + 1);
-    setCartContent([...cartContent, e]);
+     setCartContent([e]);
   };
 
   // console.log(cartContent);

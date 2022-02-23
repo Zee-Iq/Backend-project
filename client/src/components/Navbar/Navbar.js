@@ -17,7 +17,7 @@ export default function Navbar({ children }) {
   const [counter, setCounter] = useState(0);
 
   const { updateCartItems } = useContext(testContext);
-console.log(updateCartItems?.counter);
+// console.log(updateCartItems?.counter);
 
   return (
     // <CartItems.Provider value={{updateCartItems, setUpdateCartItems}} >
@@ -57,7 +57,7 @@ console.log(updateCartItems?.counter);
                   style={{ fontWeight: "900" }}
                   className="d-inline"
                 />
-                <span className="d-inline cartCounter">{updateCartItems?.counter || 0}</span>
+                <span className="d-inline cartCounter">{updateCartItems?.length || 0}</span>
               </Link>
             </div>
             <Link to="/login" className="mx-5">
