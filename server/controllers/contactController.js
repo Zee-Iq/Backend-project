@@ -20,6 +20,8 @@ const saveContacts = () => {
   fs.writeFileSync(fullpath, JSON.stringify(contacts, null, "\t"));
 };
 
+//
+
 // LIST FUNCTION
 exports.handleListContact = (req, res) => {
   res.send(contacts);
@@ -35,7 +37,7 @@ exports.handleAddContact = (req, res) => {
     saveContacts();
     res.send(contacts);
   } catch (error) {
-    console.log("handleAddContact error", error.message);
+    console.log("handleADDContact error", error.message);
     res.send(error.message);
   }
 };
@@ -43,14 +45,18 @@ exports.handleAddContact = (req, res) => {
 //EDIT
 
 exports.handleEditContact = (req, res) => {
-
-    res.send('HELLO FROM EDIT')
-
-}
+  res.send("HELLO FROM EDIT");
+};
 
 // DELETE
 
 exports.handleDeleteContact = (req, res) => {
-    res.send('HELLO FROM DELETE')
-}
-
+  try {
+    contacts = req.body || [];
+    saveContacts();
+    res.send(contacts);
+  } catch (error) {
+    console.log("handleDELETEContact error", error.message);
+    res.send(error.message);
+  }
+};
