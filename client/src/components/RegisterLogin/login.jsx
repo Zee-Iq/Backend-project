@@ -22,6 +22,7 @@ const Login = (props) => {
 
   const history = useHistory()
 
+
   // GET DATA
   useEffect(() => {
     const getData = async () => {
@@ -61,6 +62,7 @@ const Login = (props) => {
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
   return (
+
     <form >
       <Grid>
         <Paper elevation={10} style={paperStyle}>
@@ -91,10 +93,7 @@ const Login = (props) => {
             control={<Checkbox name="checkedB" color="primary" />}
             label="Remember me"
           />
-          {/* <NavLink 
-          to="/"
-          
-          > */}
+
             <Button
               type="submit"
               color="primary"
@@ -106,13 +105,10 @@ const Login = (props) => {
             >
               Sign in
             </Button>
-          {/* </NavLink> */}
-
           <Typography>
             <Link href="#">Forgot password ?</Link>
           </Typography>
-          <Typography>
-            {" "}
+          <Typography>         
             Do you have an account ?<Link href="/register">Register here</Link>
           </Typography>
         </Paper>
