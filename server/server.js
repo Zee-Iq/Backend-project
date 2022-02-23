@@ -1,15 +1,16 @@
-const express = require('express')
-const app = express()
+const path = require('path')
+console.log('path is: ', __dirname)
 
+const express = require('express')
+
+const app = express()
 
 require('dotenv').config()
 
 
 app.use('/contacts', require('./routes/contactRoute'))
-
-
 app.use('/meals', require('./routes/mealsRoute'))
-
+app.use('/users', require('./routes/registerRoute'))
 
 // app.get("/" , (req, res) =>{
 //     res.send("hello fromserver.js ")

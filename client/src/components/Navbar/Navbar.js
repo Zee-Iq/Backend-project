@@ -35,13 +35,24 @@ export default function Navbar({ children }) {
                 </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href="#">Features</MDBNavbarLink>
+                <MDBNavbarLink>
+                  <Link to='/about'>
+                  About
+                  </Link>
+                  </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href="#">Pricing</MDBNavbarLink>
+                <MDBNavbarLink >
+                  <Link to="/contact">Contact</Link>
+                  </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href="#">About</MDBNavbarLink>
+                <MDBNavbarLink >
+                  <Link to='demo'>
+
+                  Demo
+                  </Link>
+                  </MDBNavbarLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
             <div className="cartContainer">
