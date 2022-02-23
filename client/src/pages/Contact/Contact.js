@@ -1,4 +1,4 @@
-import { MDBIcon, MDBModal } from "mdb-react-ui-kit";
+import { MDBIcon } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import "./Contact.scss";
 import axios from "axios";
@@ -21,6 +21,7 @@ export const Contact = () => {
 
   console.log("cd", cd);
 
+  // CREATE AN EMPTY OBJECT
   const [contact, setContact] = useState({
     name: "",
     mail: "",
@@ -30,7 +31,7 @@ export const Contact = () => {
   });
   const [allContact, setAllContact] = useState([]);
 
-  // GET INFO FROM USER
+  // GET INFO FROM USER SEND TO THE OBJECT
   const onInputChange = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value });
   };
@@ -39,6 +40,17 @@ export const Contact = () => {
   const handleAddContact = async () => {
     const response = await axios.post("/contacts/add", contact);
     setflag(!flag);
+  };
+
+  // EDIT
+  const handleEditContact = (index) => {};
+
+  //DELETE
+  const handleDeleteContact = (index) => {
+    let temp = [...cd];
+    if (index !== -1) {
+      temp.splice(index, 1);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -197,7 +209,7 @@ export const Contact = () => {
         <h1>TEST</h1>
         {cd?.map((item, index) => {
           return (
-            <Row key={index} className="m-2 shadow ">
+            <Row key={index} className="m-2 shadow-2 d-flex align-items-center">
               <Col className=" ">{item.name}</Col>
               <Col className=" ">{item.mail}</Col>
               <Col className=" ">{item.phone}</Col>
@@ -205,10 +217,11 @@ export const Contact = () => {
               <Col className="">{item.message}</Col>
               <Col>
                 <OverlayTrigger
-                  overlay={<Tooltip  id={`tooltip-top`}>Edit</Tooltip>}
+                  overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}
                 >
                   <button
-                    /* onClick={handleShow} */ className="btn text-warning btn-act"
+                    onClick={() => handleEditContact(index)}
+                    className="btn text-warning btn-act"
                     data-toggle="modal"
                   >
                     <EditIcon />
@@ -218,14 +231,14 @@ export const Contact = () => {
                   overlay={<Tooltip id={`tooltip-top`}>Delete</Tooltip>}
                 >
                   <button
-                    /* onClick={() => deleteEmployee(employee.id)} */ className="btn text-danger btn-act"
+                    onClick={() => handleDeleteContact(index)}
+                    className="btn text-danger btn-act"
                     data-toggle="modal"
                   >
                     <DeleteIcon />{" "}
                   </button>
                 </OverlayTrigger>
               </Col>
-              
             </Row>
           );
         })}

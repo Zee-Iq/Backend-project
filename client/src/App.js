@@ -13,6 +13,7 @@ import {About} from './pages/About/About';
 import Admin from "./pages/Admin/admin";
 import LogIn from "./components/RegisterLogin/login";
 import Register from "./components/RegisterLogin/register";
+import {Demo} from './pages/Demo/Demo'
 function App() {
   return (
     <div className="App">
@@ -22,10 +23,11 @@ function App() {
         {/*  <Register />
          <LogIn /> */}
         <Route exact path='/' component={Home} />
+        <Route exact path='/about' component={About} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={LogIn} />
         <Route exact path='/contact' component={Contact} />
-        {/* <Route exact path='/demo' component={Demo} /> */}
+        <Route exact path='/demo' component={Demo} />
         <Route exact path='/admin' component={Admin} />
       </Switch>
     </div>
