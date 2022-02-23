@@ -16,7 +16,7 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 
-import { testContext } from "../CartContext/CartContext";
+import { testContext } from "../../components/CartContext/CartContext";
 // import data file
 // import data from "../../datas/Data.json";
 
