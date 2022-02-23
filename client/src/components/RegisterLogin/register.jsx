@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Grid,
   Paper,
@@ -15,6 +15,22 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 const Register = () => {
+
+  /* catching data */
+  const [user, setUser] = useState({
+    username: "",
+    mail: "",
+    password: "",
+  });
+  
+  /*  User input*/
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  console.log(user)
+  
+  
+
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
