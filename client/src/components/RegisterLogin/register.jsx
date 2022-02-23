@@ -1,5 +1,6 @@
+import { useState } from "react";
+import axios from "axios";
 
-import React, { useEffect, useState } from "react";
 import {
   Grid,
   Paper,
@@ -18,22 +19,29 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 
 const Register = () => {
-
   /* catching data */
-const [user, setUser] = useState({
-  username: "",
-  mail: "",
-  password: "",
-});
+  const [user, setUser] = useState({
+    name: "",
+    mail: "",
+    password: "",
+  });
 
-/*  User input*/
-const onInputChange = (e) => {
-  setUser({ ...user, [e.target.name]: e.target.value });
-};
-console.log(user)
+  /*  Info from  User input*/
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  console.log(user);
 
+  // SEND CONTACT OBJECT TO THE SERVER SIDE
+  const handleAddUsers = async () => {
+    const response = await axios.post("/users/add", user);
+    //setflag(!flag);
+  };
 
-
+  const handleRegister = (e) => {
+    e.preventDefault();
+    handleAddUsers();
+  };
 
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
@@ -51,7 +59,11 @@ console.log(user)
             Please fill this form to create an account !
           </Typography>
         </Grid>
-        <form>
+        <form
+          onSubmit={(e) => {
+            handleRegister(e);
+          }}
+        >
           <TextField
             fullWidth
             label="Name"

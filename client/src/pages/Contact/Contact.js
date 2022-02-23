@@ -195,14 +195,24 @@ export const Contact = () => {
       </div>
       <div>
         <h1>TEST</h1>
+
+        <Row className="m-2 bg-info ">
+             <Col>Name</Col>
+             <Col className="">Mail</Col>
+             <Col>Phone</Col>
+             <Col>Location</Col>
+             <Col>Message</Col>
+             <Col>Edit</Col>
+             </Row>
         {cd?.map((item, index) => {
-          return (
+          return (           
             <Row key={index} className="m-2 shadow ">
               <Col className=" ">{item.name}</Col>
-              <Col className=" ">{item.mail}</Col>
+              <Col className="">{item.mail}</Col>
               <Col className=" ">{item.phone}</Col>
               <Col className=" ">{item.location}</Col>
               <Col className="">{item.message}</Col>
+              
               <Col>
                 <OverlayTrigger
                   overlay={<Tooltip  id={`tooltip-top`}>Edit</Tooltip>}
@@ -227,6 +237,7 @@ export const Contact = () => {
               </Col>
               
             </Row>
+            
           );
         })}
       </div>
