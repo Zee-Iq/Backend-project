@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import {
   Grid,
   Paper,
@@ -13,9 +13,15 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import axios from "axios";
-const Login = () => {
+
+
+
+const Login = (props) => {
   const [users, setUsers] = useState([]);
   const [flag, setFlag] = useState();
+
+  const history = useHistory()
+
 
   // GET DATA
   useEffect(() => {
@@ -35,12 +41,17 @@ const Login = () => {
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  console.log("user:", user);
+  // console.log("user:", user.username);
 
-  const handleSubmit = (e) => {
+
+  
+  const handleSetUsername = (e) => {
     e.preventDefault();
-    console.log("HELLO FROM SIGN IN");
+    props.toGetUsernam(user.username);
+    history.push('/')
   };
+
+  // console.log(props.toGetUsernam);
 
   const paperStyle = {
     padding: 20,
@@ -51,7 +62,8 @@ const Login = () => {
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+
+    <form >
       <Grid>
         <Paper elevation={10} style={paperStyle}>
           <Grid align="center">
@@ -81,18 +93,18 @@ const Login = () => {
             control={<Checkbox name="checkedB" color="primary" />}
             label="Remember me"
           />
-          <NavLink to="/">
+
             <Button
               type="submit"
               color="primary"
               variant="contained"
               style={btnstyle}
               fullWidth
+          onClick={(e) => handleSetUsername(e)}
+
             >
               Sign in
             </Button>
-          </NavLink>
-
           <Typography>
             <Link href="#">Forgot password ?</Link>
           </Typography>
