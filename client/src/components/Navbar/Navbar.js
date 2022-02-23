@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Navbar.scss";
 import {
   MDBNavbar,
@@ -11,37 +11,63 @@ import {
   MDBBtn,
 } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
+import { testContext } from "../CartContext/CartContext";
 
-export default function Navbar () {
+export default function Navbar({ children }) {
+  const [counter, setCounter] = useState(0);
+
+  const { updateCartItems } = useContext(testContext);
+console.log(updateCartItems?.counter);
+
   return (
-    <div className="header">
-      <header>
-        <MDBNavbar expand="lg" light bgColor="white">
-          <MDBContainer fluid>
-            <div className="collapse navbar-collapse" id="navbarExample01">
-              <MDBNavbarNav right className="mb-2 mb-lg-0">
-                <MDBNavbarItem active>
-                  <MDBNavbarLink aria-current="page" href="#">
-                    Home
-                  </MDBNavbarLink>
-                </MDBNavbarItem>
-                <MDBNavbarItem>
-                  <MDBNavbarLink href="#">Features</MDBNavbarLink>
-                </MDBNavbarItem>
-                <MDBNavbarItem>
-                  <MDBNavbarLink href="#">Pricing</MDBNavbarLink>
-                </MDBNavbarItem>
-                <MDBNavbarItem>
-                  <MDBNavbarLink href="#">About</MDBNavbarLink>
-                </MDBNavbarItem>
-              </MDBNavbarNav>
-              <Link to="/login">
-                <MDBBtn>LOGIN</MDBBtn>
+    // <CartItems.Provider value={{updateCartItems, setUpdateCartItems}} >
+    <div className="sticky-top">
+      {/* <header> */}
+      <MDBNavbar expand="lg" light bgColor="white">
+        <MDBContainer fluid>
+          <div className="collapse navbar-collapse" id="navbarExample01">
+            <MDBNavbarNav right className="mb-2 mb-lg-0">
+              <MDBNavbarItem active>
+                <MDBNavbarLink aria-current="page" to="/" >
+                  <Link to="/" style={{color: 'inherit'}} >
+                  Home
+                  </Link>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="#">Features</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="#">Pricing</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="#">About</MDBNavbarLink>
+              </MDBNavbarItem>
+            </MDBNavbarNav>
+            <div className="cartContainer">
+              <Link
+                to="/cart"
+                className="position-realtive"
+                style={{ position: "realtive !important" }}
+              >
+                <MDBIcon
+                  fab
+                  icon="opencart"
+                  size="lg"
+                  style={{ fontWeight: "900" }}
+                  className="d-inline"
+                />
+                <span className="d-inline cartCounter">{updateCartItems?.counter || 0}</span>
               </Link>
             </div>
-          </MDBContainer>
-        </MDBNavbar>
-      </header>
+            <Link to="/login" className="mx-5">
+              <MDBBtn>LOGIN</MDBBtn>
+            </Link>
+          </div>
+        </MDBContainer>
+      </MDBNavbar>
+      {/* </header> */}
     </div>
+    // </CartItems.Provider>
   );
-};
+}
