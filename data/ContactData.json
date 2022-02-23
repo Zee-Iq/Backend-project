@@ -1,17 +1,9 @@
 [
 	{
 		"name": "Ismail",
-		"mail": "Düzel",
-		"phone": "0123456123",
-		"location": "Grevenbroich",
-		"message": "message ismail"
-	},
-	{
-		"name": "aaa",
-		"mail": "aa",
-		"phone": "0123456123",
-		"location": "Grevenbroich",
-		"message": "adsfdghjk"
+		"mail": "",
+		"phone": "",
+		"location": "",
+		"message": ""
 	}
-
 ]

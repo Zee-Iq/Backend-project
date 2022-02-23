@@ -7,15 +7,17 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export const Contact = () => {
-  const [cd, setCd] = useState();
-  const [flag, setflag] = useState();
+  const [cd, setCd] = useState([]);
+  const [allContact, setAllContact] = useState([]);
+  const [flag, setFlag] = useState();
+  const [update, setUpdate] = useState(false);
 
+  // GET DATA
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get("/contacts/list");
       setCd([...response.data]);
     };
-
     getData();
   }, [flag]);
 
@@ -29,7 +31,6 @@ export const Contact = () => {
     location: "",
     message: "",
   });
-  const [allContact, setAllContact] = useState([]);
 
   // GET INFO FROM USER SEND TO THE OBJECT
   const onInputChange = (e) => {
@@ -38,12 +39,20 @@ export const Contact = () => {
 
   // SEND CONTACT OBJECT TO THE SERVER SIDE
   const handleAddContact = async () => {
-    const response = await axios.post("/contacts/add", contact);
-    setflag(!flag);
+    await axios.post("/contacts/add", contact);
+    setFlag(!flag);
   };
 
   // EDIT
-  const handleEditContact = (index) => {};
+  const handleEditContact = (index) => {
+    let temp = [...cd];
+    if (index !== -1) {
+      temp.splice(index, 1);
+    }
+    setCd(temp);
+
+    setUpdate(!update);
+  };
 
   //DELETE
   const handleDeleteContact = (index) => {
@@ -51,13 +60,29 @@ export const Contact = () => {
     if (index !== -1) {
       temp.splice(index, 1);
     }
+    setCd(temp);
+
+    setUpdate(!update);
   };
+
+  useEffect(() => {
+    const updateData = async () => {
+      await axios.post("/contacts/delete", cd);
+    };
+    if (update) updateData();
+
+    console.log("-------------useEffect is running----------------");
+  }, [update]);
+
+  // END DELETE
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAllContact([...allContact, contact]);
+    setFlag(!flag);
     handleAddContact();
   };
+
   console.log("contact is: ", contact);
   console.log("ALL CONTACTS ARE: ", allContact);
   return (
@@ -240,9 +265,13 @@ export const Contact = () => {
                 </OverlayTrigger>
               </Col>
             </Row>
+
+            
           );
         })}
       </div>
+
+     
     </div>
   );
 };
