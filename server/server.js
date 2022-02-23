@@ -10,7 +10,7 @@ require('dotenv').config()
 
 app.use('/contacts', require('./routes/contactRoute'))
 app.use('/meals', require('./routes/mealsRoute'))
-
+app.use('/users', require('./routes/registerRoute'))
 
 // app.get("/" , (req, res) =>{
 //     res.send("hello fromserver.js ")
