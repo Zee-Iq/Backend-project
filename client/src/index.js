@@ -7,12 +7,12 @@ import { BrowserRouter } from "react-router-dom";
 // import Header from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import CartContextProvider from "./components/CartContext/CartContext";
-import Navbar from "./components/Navbar/Navbar";
+// import Navbar from "./components/Navbar/Navbar";
 
 ReactDOM.render(
   <CartContextProvider>
     <BrowserRouter>
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* <Header /> */}
       <App />

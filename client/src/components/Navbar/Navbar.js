@@ -13,11 +13,13 @@ import {
 import { Link } from "react-router-dom";
 import { testContext } from "../CartContext/CartContext";
 
-export default function Navbar({ children }) {
+export default function Navbar( props) {
   const [counter, setCounter] = useState(0);
 
   const { updateCartItems } = useContext(testContext);
 // console.log(updateCartItems?.counter);
+
+console.log("Username FROM NAVBAR", props?.username);
 
   return (
     // <CartItems.Provider value={{updateCartItems, setUpdateCartItems}} >
@@ -28,7 +30,7 @@ export default function Navbar({ children }) {
           <div className="collapse navbar-collapse" id="navbarExample01">
             <MDBNavbarNav right className="mb-2 mb-lg-0">
               <MDBNavbarItem active>
-                <MDBNavbarLink aria-current="page" to="/" >
+                <MDBNavbarLink aria-current="page" >
                   <Link to="/" style={{color: 'inherit'}} >
                   Home
                   </Link>
@@ -72,7 +74,10 @@ export default function Navbar({ children }) {
               </Link>
             </div>
             <Link to="/login" className="mx-5">
-              <MDBBtn>LOGIN</MDBBtn>
+              <MDBBtn>
+                {props?.username ? props?.username : "Login"}
+                {/* LOGIN */}
+                </MDBBtn>
             </Link>
           </div>
         </MDBContainer>

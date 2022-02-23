@@ -11,7 +11,7 @@ import {
 
 export const Footer = () => {
   return (
-    <div className="fixed-bottom" >
+    <div className="sticky-bottom mt-5" >
     
          <MDBFooter className='bg-dark text-center text-white '>
       <div className='container p-4 pb-0'>
