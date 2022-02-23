@@ -31,8 +31,7 @@ function App() {
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={LogIn} />
         <Route exact path='/contact' component={Contact} />
-        <Route exact path='/demo' component={Demo} />
-        <Route exact path='/admin' component={Admin} />
+        <Route exact path='/demo' component={Demo} />      
         <Route exact path="/cart" component={Cart} />
       </Switch>
     </div>
