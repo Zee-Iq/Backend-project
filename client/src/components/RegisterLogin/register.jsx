@@ -17,7 +17,6 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-
 const Register = () => {
   /* catching data */
   const [user, setUser] = useState({
