@@ -83,10 +83,11 @@ export const Contact = () => {
     handleAddContact();
   };
 
+  const [adminClass, setAdminClass]= useState()
   console.log("contact is: ", contact);
   console.log("ALL CONTACTS ARE: ", allContact);
   return (
-    <div className="m-5">
+    <div className="contacts m-5">
       <div
         className="contact2"
         style={{
@@ -230,7 +231,8 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-      <div>
+      <button onClick={(e) => setAdminClass(!adminClass)} className="btn btn-primary">ADMIN</button>
+      <div className={(adminClass)? "show" : "hide"}>
         <h1>TEST</h1>
 
         <Row className="m-2 bg-info ">

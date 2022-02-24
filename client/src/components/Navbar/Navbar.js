@@ -39,6 +39,7 @@ export default function Navbar () {
                 <MDBBtn>LOGIN</MDBBtn>
               </Link>
             </div>
+            
           </MDBContainer>
         </MDBNavbar>
       </header>
