@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Grid,
   Paper,
@@ -12,13 +12,19 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+
 import axios from "axios";
+import { loginContext } from "../LoginContext/LoginContext";
+
 
 
 
 const Login = (props) => {
+
+  const {who, setWho} = useContext(loginContext)
   const [users, setUsers] = useState([]);
   const [flag, setFlag] = useState();
+ 
 
   const history = useHistory()
 
@@ -47,9 +53,13 @@ const Login = (props) => {
   
   const handleSetUsername = (e) => {
     e.preventDefault();
-    props.toGetUsernam(user.username);
+   
+    props.toGetUsernam(user.username);    
+  
     history.push('/')
   };
+  console.log('WHO: ', who)
+  
 
   // console.log(props.toGetUsernam);
 
@@ -63,57 +73,59 @@ const Login = (props) => {
   const btnstyle = { margin: "8px 0" };
   return (
 
-    <form >
-      <Grid>
-        <Paper elevation={10} style={paperStyle}>
-          <Grid align="center">
-            <Avatar style={avatarStyle}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <h2>Sign In</h2>
-          </Grid>
-          <TextField
-            name="username"
-            onChange={(e) => onInputChange(e)}
-            /* label="Username" */
-            placeholder="Enter username"
-            fullWidth
-            required
-          />
-          <TextField
-            name="password"
-            onChange={(e) => onInputChange(e)}
-            /* label="Password" */
-            placeholder="Enter password"
-            type="password"
-            fullWidth
-            required
-          />
-          <FormControlLabel
-            control={<Checkbox name="checkedB" color="primary" />}
-            label="Remember me"
-          />
-
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              style={btnstyle}
+    <div>
+      <form >
+        <Grid>
+          <Paper elevation={10} style={paperStyle}>
+            <Grid align="center">
+              <Avatar style={avatarStyle}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <h2>Sign In</h2>
+            </Grid>
+            <TextField
+              name="username"
+              onChange={(e) => onInputChange(e)}
+              /* label="Username" */
+              placeholder="Enter username"
               fullWidth
-          onClick={(e) => handleSetUsername(e)}
+              required
+            />
+            <TextField
+              name="password"
+              onChange={(e) => onInputChange(e)}
+              /* label="Password" */
+              placeholder="Enter password"
+              type="password"
+              fullWidth
+              required
+            />
+            <FormControlLabel
+              control={<Checkbox name="checkedB" color="primary" />}
+              label="Remember me"
+            />
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                style={btnstyle}
+                fullWidth
+            onClick={(e) => handleSetUsername(e)}
+              >
+                Sign in
+              </Button>
+            <Typography>
+              <Link href="#">Forgot password ?</Link>
+            </Typography>
+            <Typography>
+              Do you have an account ?<Link href="/register">Register here</Link>
+            </Typography>
+          </Paper>
+        </Grid>
+      </form>
 
-            >
-              Sign in
-            </Button>
-          <Typography>
-            <Link href="#">Forgot password ?</Link>
-          </Typography>
-          <Typography>         
-            Do you have an account ?<Link href="/register">Register here</Link>
-          </Typography>
-        </Paper>
-      </Grid>
-    </form>
+    
+    </div>
   );
 };
 
