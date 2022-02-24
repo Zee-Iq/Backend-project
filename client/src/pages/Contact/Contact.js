@@ -11,6 +11,7 @@ export const Contact = () => {
   const [allContact, setAllContact] = useState([]);
   const [flag, setFlag] = useState();
   const [update, setUpdate] = useState(false);
+  const [adminClass, setAdminClass]= useState()
 
   // GET DATA
   useEffect(() => {
@@ -79,7 +80,7 @@ export const Contact = () => {
     handleAddContact();
   };
 
-  const [adminClass, setAdminClass]= useState()
+  
   console.log("contact is: ", contact);
   console.log("ALL CONTACTS ARE: ", allContact);
   return (
