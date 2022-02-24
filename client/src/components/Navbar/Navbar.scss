@@ -1,0 +1,21 @@
+.cartContainer{
+    position: relative;
+}
+
+.cartCounter{
+    position: absolute;
+    top: -14px;
+    right: 3px;
+    background-color: #1266f1;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    // padding: 1px 7px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+}
+
+a{
+    color: inherit;
+}

@@ -45,14 +45,10 @@ export const Contact = () => {
 
   // EDIT
   const handleEditContact = (index) => {
-    let temp = [...cd];
-    if (index !== -1) {
-      temp.splice(index, 1);
-    }
-    setCd(temp);
-
-    setUpdate(!update);
+    
   };
+
+
 
   //DELETE
   const handleDeleteContact = (index) => {

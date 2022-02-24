@@ -1,13 +1,13 @@
 import React from "react";
 import "./Header.scss";
-import Navbar from "../Navbar/Navbar";
+// import Navbar from "../Navbar/Navbar";
 
 export default function Header() {
   return (
     <header 
-    // style={{ marginBottom: "10%" }}
+    style={{ marginTop: "2%" }}
     >
-      <Navbar />
+      {/* <Navbar /> */}
       <div
         className="p-5 text-center bg-image"
         style={{
