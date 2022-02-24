@@ -1,5 +1,5 @@
 import "./Home.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import axios from "axios";
 import {
@@ -16,11 +16,19 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 
+import { testContext } from "../../components/CartContext/CartContext";
 // import data file
 // import data from "../../datas/Data.json";
 
 export default function Home() {
+  const { setUpdateCartItems, updateCartItems } = useContext(testContext);
+
+  // importing context
+
   const [meals, setMeals] = useState();
+
+  const [cartItems, setCartItems] = useState(0);
+  const [cartContent, setCartContent] = useState([]);
   // const history = useHistory();
 
   useEffect(() => {
@@ -35,6 +43,18 @@ export default function Home() {
 
     getData();
   }, []);
+  useEffect(() => {
+    if(cartItems >= 1) 
+    setUpdateCartItems( [...updateCartItems, ...cartContent] )
+  }, [cartItems]);
+
+
+  const cartHandler = (e) => {
+    setCartItems(cartItems + 1);
+     setCartContent([e]);
+  };
+
+  // console.log(cartContent);
 
   return (
     <>
@@ -59,7 +79,12 @@ export default function Home() {
               </MDBCardBody>
               <MDBCardFooter>
                 <small className="text-muted">{meal.strCategory}</small>
-                <MDBBtn floating style={{ float: "right" }} tag="a">
+                <MDBBtn
+                  floating
+                  style={{ float: "right" }}
+                  tag="a"
+                  onClick={() => cartHandler(meal)}
+                >
                   <MDBIcon fas icon="cart-plus" size="lg" />
                 </MDBBtn>
               </MDBCardFooter>

@@ -12,11 +12,9 @@ router.get('/', (req, res) => {
 router.get('/list', contactController.handleListContact)
 router.post('/add', contactController.handleAddContact)
 router.get('/edit', contactController.handleEditContact)
-router.get('/delete', contactController.handleDeleteContact)
+router.post('/delete', contactController.handleDeleteContact)
 
-router.get('/hello', (req, res) => {
-    res.send('HELLO FROM HELLO')
-})
+
 
 
 module.exports = router

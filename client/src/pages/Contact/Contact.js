@@ -1,4 +1,4 @@
-import { MDBIcon, MDBModal } from "mdb-react-ui-kit";
+import { MDBIcon } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import "./Contact.scss";
 import axios from "axios";
@@ -7,20 +7,24 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export const Contact = () => {
-  const [cd, setCd] = useState();
-  const [flag, setflag] = useState();
+  const [cd, setCd] = useState([]);
+  const [allContact, setAllContact] = useState([]);
+  const [flag, setFlag] = useState();
+  const [update, setUpdate] = useState(false);
+  const [adminClass, setAdminClass]= useState()
 
+  // GET DATA
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get("/contacts/list");
       setCd([...response.data]);
     };
-
     getData();
   }, [flag]);
 
   console.log("cd", cd);
 
+  // CREATE AN EMPTY OBJECT
   const [contact, setContact] = useState({
     name: "",
     mail: "",
@@ -28,28 +32,59 @@ export const Contact = () => {
     location: "",
     message: "",
   });
-  const [allContact, setAllContact] = useState([]);
 
-  // GET INFO FROM USER
+  // GET INFO FROM USER SEND TO THE OBJECT
   const onInputChange = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value });
   };
 
   // SEND CONTACT OBJECT TO THE SERVER SIDE
   const handleAddContact = async () => {
-    const response = await axios.post("/contacts/add", contact);
-    setflag(!flag);
+    await axios.post("/contacts/add", contact);
+    setFlag(!flag);
   };
+
+  // EDIT
+  const handleEditContact = (index) => {
+    
+  };
+
+
+
+  //DELETE
+  const handleDeleteContact = (index) => {
+    let temp = [...cd];
+    if (index !== -1) {
+      temp.splice(index, 1);
+    }
+    setCd(temp);
+
+    setUpdate(!update);
+  };
+
+  useEffect(() => {
+    const updateData = async () => {
+      await axios.post("/contacts/delete", cd);
+    };
+    if (update) updateData();
+
+    console.log("-------------useEffect is running----------------");
+  }, [update]);
+
+  // END DELETE
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAllContact([...allContact, contact]);
+    setFlag(!flag);
     handleAddContact();
   };
+
+  
   console.log("contact is: ", contact);
   console.log("ALL CONTACTS ARE: ", allContact);
   return (
-    <div className="m-5">
+    <div className="contacts m-5">
       <div
         className="contact2"
         style={{
@@ -193,7 +228,8 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-      <div>
+      <button onClick={(e) => setAdminClass(!adminClass)} className="btn btn-primary">ADMIN</button>
+      <div className={(adminClass)? "show" : "hide"}>
         <h1>TEST</h1>
 
         <Row className="m-2 bg-info ">
@@ -205,8 +241,8 @@ export const Contact = () => {
              <Col>Edit</Col>
              </Row>
         {cd?.map((item, index) => {
-          return (           
-            <Row key={index} className="m-2 shadow ">
+          return (
+            <Row key={index} className="m-2 shadow-2 d-flex align-items-center">
               <Col className=" ">{item.name}</Col>
               <Col className="">{item.mail}</Col>
               <Col className=" ">{item.phone}</Col>
@@ -215,10 +251,11 @@ export const Contact = () => {
               
               <Col>
                 <OverlayTrigger
-                  overlay={<Tooltip  id={`tooltip-top`}>Edit</Tooltip>}
+                  overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}
                 >
                   <button
-                    /* onClick={handleShow} */ className="btn text-warning btn-act"
+                    onClick={() => handleEditContact(index)}
+                    className="btn text-warning btn-act"
                     data-toggle="modal"
                   >
                     <EditIcon />
@@ -228,19 +265,21 @@ export const Contact = () => {
                   overlay={<Tooltip id={`tooltip-top`}>Delete</Tooltip>}
                 >
                   <button
-                    /* onClick={() => deleteEmployee(employee.id)} */ className="btn text-danger btn-act"
+                    onClick={() => handleDeleteContact(index)}
+                    className="btn text-danger btn-act"
                     data-toggle="modal"
                   >
                     <DeleteIcon />{" "}
                   </button>
                 </OverlayTrigger>
               </Col>
-              
             </Row>
             
           );
         })}
       </div>
+
+     
     </div>
   );
 };
