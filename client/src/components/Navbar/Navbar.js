@@ -68,7 +68,7 @@ console.log("Username FROM NAVBAR", props?.username);
                   icon="opencart"
                   size="lg"
                   style={{ fontWeight: "900" }}
-                  className="d-inline"
+                  className="d-inline cartIcon"
                 />
                 <span className="d-inline cartCounter">{updateCartItems?.length || 0}</span>
               </Link>
