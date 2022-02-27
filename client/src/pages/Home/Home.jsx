@@ -14,6 +14,7 @@ import {
   MDBCardFooter,
   MDBBtn,
   MDBIcon,
+  MDBCardOverlay,
 } from "mdb-react-ui-kit";
 
 import { testContext } from "../../components/CartContext/CartContext";
@@ -44,14 +45,13 @@ export default function Home() {
     getData();
   }, []);
   useEffect(() => {
-    if(cartItems >= 1) 
-    setUpdateCartItems( [...updateCartItems, ...cartContent] )
+    if (cartItems >= 1)
+      setUpdateCartItems([...updateCartItems, ...cartContent]);
   }, [cartItems]);
-
 
   const cartHandler = (e) => {
     setCartItems(cartItems + 1);
-     setCartContent([e]);
+    setCartContent([e]);
   };
 
   // console.log(cartContent);
@@ -71,6 +71,9 @@ export default function Home() {
                 position="top"
                 className="rounded-circle"
               />
+              <MDBCardOverlay>
+                <MDBCardTitle className="prices">{meal.price}€</MDBCardTitle>
+              </MDBCardOverlay>
               <MDBCardHeader>{meal.strArea}</MDBCardHeader>
               <MDBCardBody>
                 <MDBCardTitle>{meal.strMeal}</MDBCardTitle>
