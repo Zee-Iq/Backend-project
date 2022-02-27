@@ -28,33 +28,33 @@ console.log("Username FROM NAVBAR", props?.username);
       <MDBNavbar expand="lg" light bgColor="white">
         <MDBContainer fluid>
           <div className="collapse navbar-collapse" id="navbarExample01">
-            <MDBNavbarNav right className="mb-2 mb-lg-0">
+            <MDBNavbarNav right className="mb-2 mb-lg-0 leftMenu">
               <MDBNavbarItem active>
-                <MDBNavbarLink aria-current="page" >
+                {/* <MDBNavbarLink aria-current="page" > */}
                   <Link to="/" style={{color: 'inherit'}} >
                   Home
                   </Link>
-                </MDBNavbarLink>
+                {/* </MDBNavbarLink> */}
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink>
+                {/* <MDBNavbarLink> */}
                   <Link to='/about'>
                   About
                   </Link>
-                  </MDBNavbarLink>
+                  {/* </MDBNavbarLink> */}
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink >
-                  <Link to="/contact">Contact</Link>
-                  </MDBNavbarLink>
+                {/* <MDBNavbarLink > */}
+                  <Link to="/contact"
+                  >Contact</Link>
+                  {/* </MDBNavbarLink> */}
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink >
-                  <Link to='demo'>
-
+                {/* <MDBNavbarLink > */}
+                  <Link to='/demo' >
                   Demo
                   </Link>
-                  </MDBNavbarLink>
+                  {/* </MDBNavbarLink> */}
               </MDBNavbarItem>
             </MDBNavbarNav>
             <div className="cartContainer">

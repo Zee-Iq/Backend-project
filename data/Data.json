@@ -7,7 +7,8 @@
       "strCategory": "Vegetarian",
       "strArea": "Italian",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
-      "strTags": null
+      "strTags": null,
+      "price": 8.99
     },
     {
       "idMeal": "52805",
@@ -16,7 +17,8 @@
       "strCategory": "Lamb",
       "strArea": "Indian",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
-      "strTags": null
+      "strTags": null,
+      "price": 10.99
 
     },
     {
@@ -26,7 +28,8 @@
       "strCategory": "Side",
       "strArea": "Turkish",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg",
-      "strTags": "SideDish"
+      "strTags": "SideDish",
+      "price": 12.99
     },
     {
       "idMeal": "52906",
@@ -35,7 +38,8 @@
       "strCategory": "Vegetarian",
       "strArea": "French",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/wssvvs1511785879.jpg",
-      "strTags": "Tart"
+      "strTags": "Tart",
+      "price": 5.99
     },
     {
       "idMeal": "52845",
@@ -44,7 +48,8 @@
       "strCategory": "Miscellaneous",
       "strArea": "British",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/ypuxtw1511297463.jpg",
-      "strTags": "Alcoholic"
+      "strTags": "Alcoholic",
+      "price": 10.99
     },
     {
       "idMeal": "52978",
@@ -53,7 +58,9 @@
       "strCategory": "Side",
       "strArea": "Turkish",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg",
-      "strTags": "SideDish"
+      "strTags": "SideDish",
+      "price": 12.99
+
     },
     {
       "idMeal": "52836",
@@ -62,7 +69,8 @@
       "strCategory": "Seafood",
       "strArea": "Spanish",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg",
-      "strTags": null
+      "strTags": null,
+      "price": 17.99
     },
     {
         "idMeal": "52877",
@@ -71,7 +79,8 @@
         "strCategory": "Lamb",
         "strArea": "British",
         "strMealThumb": "https://www.themealdb.com/images/media/meals/sxrpws1511555907.jpg",
-        "strTags": "Pie"
+        "strTags": "Pie",
+        "price": 4.99
     },
     {
         "idMeal": "52847",
@@ -80,7 +89,8 @@
         "strCategory": "Pork",
         "strArea": "French",
         "strMealThumb": "https://www.themealdb.com/images/media/meals/wxuvuv1511299147.jpg",
-        "strTags": null
+        "strTags": null,
+        "price": 8.99
     },
     {
         "idMeal": "52925",
@@ -89,7 +99,8 @@
         "strCategory": "Side",
         "strArea": "Canadian",
         "strMealThumb": "https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg",
-        "strTags": "Soup,Warm"
+        "strTags": "Soup,Warm",
+        "price": 3.99
     },
     {
       "idMeal": "52978",
@@ -98,7 +109,9 @@
       "strCategory": "Side",
       "strArea": "Turkish",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg",
-      "strTags": "SideDish"
+      "strTags": "SideDish",
+      "price": 12.99
+
     },
     {
       "idMeal": "52836",
@@ -107,7 +120,8 @@
       "strCategory": "Seafood",
       "strArea": "Spanish",
       "strMealThumb": "https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg",
-      "strTags": null
+      "strTags": null,
+      "price": 17.99
     },
     {
         "idMeal": "52877",
@@ -116,7 +130,9 @@
         "strCategory": "Lamb",
         "strArea": "British",
         "strMealThumb": "https://www.themealdb.com/images/media/meals/sxrpws1511555907.jpg",
-        "strTags": "Pie"
+        "strTags": "Pie",
+        "price": 4.99
+
     },
     {
         "idMeal": "52847",
@@ -125,7 +141,9 @@
         "strCategory": "Pork",
         "strArea": "French",
         "strMealThumb": "https://www.themealdb.com/images/media/meals/wxuvuv1511299147.jpg",
-        "strTags": null
+        "strTags": null,
+        "price": 8.99
+
     },
     {
         "idMeal": "52925",
@@ -134,7 +152,8 @@
         "strCategory": "Side",
         "strArea": "Canadian",
         "strMealThumb": "https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg",
-        "strTags": "Soup,Warm"
+        "strTags": "Soup,Warm",
+        "price": 3.99
     }
   ]
 }

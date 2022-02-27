@@ -20,3 +20,17 @@
   font-weight: bolder;
 
 }
+
+.prices{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #414141;
+  // padding: 20px;
+  color: #fff;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  line-height: 80px;
+}

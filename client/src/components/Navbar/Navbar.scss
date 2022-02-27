@@ -6,7 +6,7 @@
     position: absolute;
     top: -14px;
     right: 3px;
-    background-color: #1266f1;
+    background-color: #4f4f4f;
     width: 20px;
     height: 20px;
     line-height: 20px;
@@ -16,6 +16,12 @@
     color: white;
 }
 
+.leftMenu a{
+    margin: 0 10px;
+}
+
 a{
+    
     color: inherit;
 }
+
