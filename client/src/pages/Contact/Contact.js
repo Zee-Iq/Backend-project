@@ -11,6 +11,7 @@ export const Contact = () => {
   const [allContact, setAllContact] = useState([]);
   const [flag, setFlag] = useState();
   const [update, setUpdate] = useState(false);
+  const [adminClass, setAdminClass]= useState()
 
   // GET DATA
   useEffect(() => {
@@ -45,14 +46,10 @@ export const Contact = () => {
 
   // EDIT
   const handleEditContact = (index) => {
-    let temp = [...cd];
-    if (index !== -1) {
-      temp.splice(index, 1);
-    }
-    setCd(temp);
-
-    setUpdate(!update);
+    
   };
+
+
 
   //DELETE
   const handleDeleteContact = (index) => {
@@ -83,10 +80,11 @@ export const Contact = () => {
     handleAddContact();
   };
 
+  
   console.log("contact is: ", contact);
   console.log("ALL CONTACTS ARE: ", allContact);
   return (
-    <div className="m-5">
+    <div className="contacts m-5">
       <div
         className="contact2"
         style={{
@@ -230,7 +228,8 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-      <div>
+      <button onClick={(e) => setAdminClass(!adminClass)} className="btn btn-primary">ADMIN</button>
+      <div className={(adminClass)? "show" : "hide"}>
         <h1>TEST</h1>
 
         <Row className="m-2 bg-info ">

@@ -84,3 +84,14 @@
   background: -o-linear-gradient(left, #ff6a5b 0%, #ff4d7e 100%);
   background: linear-gradient(to right, #ff6a5b 0%, #ff4d7e 100%);
 }
+
+
+
+// ADMIN PART
+
+.contacts .hide {
+  display: none;
+}
+.contacts .show {
+  display: visible;
+}

@@ -1,18 +1,12 @@
 import React from 'react'
 import './About.scss'
+import  HomeCarousel from '../../components/carousels/HomeCarousel'
 
 export const About = () => {
   return (
-    <div>About
-      <h1>ABOUT</h1>
-      <h1>ABOUT</h1>
-      <h1>ABOUT</h1>
-      <h1>ABOUT</h1>
-      <h1>ABOUT</h1>
-      <h1>ABOUT</h1>
-      <h1>ABOUT</h1>
-      <h1>ABOUT</h1>
-      <h1>ABOUT</h1>
+    <div>
+      <HomeCarousel />
+      
     </div>
   )
 }

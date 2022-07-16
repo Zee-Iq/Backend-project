@@ -7,9 +7,11 @@ import { BrowserRouter } from "react-router-dom";
 // import Header from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import CartContextProvider from "./components/CartContext/CartContext";
+import LoginContextProvider from "./components/LoginContext/LoginContext";
 // import Navbar from "./components/Navbar/Navbar";
 
 ReactDOM.render(
+  <LoginContextProvider>
   <CartContextProvider>
     <BrowserRouter>
       {/* <Navbar /> */}
@@ -18,6 +20,7 @@ ReactDOM.render(
       <App />
       <Footer />
     </BrowserRouter>
-  </CartContextProvider>,
+  </CartContextProvider>
+  </LoginContextProvider>,
   document.getElementById("root")
 );
