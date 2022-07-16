@@ -61,7 +61,7 @@ export default function Home() {
       <div className="topSeller">
         <h1>Top seller</h1>
       </div>
-      <MDBRow className=" row-cols-1 row-cols-md-4 g-4">
+      <MDBRow className="row-cols-1 row-cols-md-3 g-5 mx-auto w-75 ">
         {meals?.map((meal, idx) => (
           <MDBCol key={idx}>
             <MDBCard className="h-100">
